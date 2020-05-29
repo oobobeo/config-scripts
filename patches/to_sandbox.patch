@@ -1,0 +1,23 @@
+diff --git a/config/global/jp/resource_list_fetcher.yml b/config/global/jp/resource_list_fetcher.yml
+index 84feccbcd..a79d71dea 100644
+--- a/config/global/jp/resource_list_fetcher.yml
++++ b/config/global/jp/resource_list_fetcher.yml
+@@ -1,7 +1,7 @@
+ common: &common
+   uri_paths:
+     kyoko:
+-      sandbox: http://op-stage-assets-tw.5ml.io:8002/
++      sandbox: http://bobeubu:8000/
+       alpha: http://cdn-lg.line-apps.com/lg/LGOPTW/alpha/
+       real: http://cdn-lg.line-apps.com/lg/LGOPTW/real/
+     mana:
+@@ -11,6 +11,9 @@ common: &common
+
+ development:
+   <<: *common
++  url_paths:
++    kyoko:
++      sandbox: http://bobeubu:8000/
+
+ test:
+   <<: *common
