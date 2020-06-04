@@ -15,10 +15,12 @@ yoshino
 chiyo
 op-local-tools
 )
+color='\033[0;32m'
+nocolor='\033[0m'
 for repo in ${repos[@]}; do
-  echo $repo
-done | parallel --will-cite -j10 'cd ~/op/{}; pwd; git -c color.status=always pull' 
-
+  echo -e "${color}$repo${nocolor}"
+done | parallel --plus --will-cite -j10 'dir={}; cd ~/op/${dir:7:-4}; echo $dir; git -c color.status=always pull'
+#parallel --will-cite -j10 'cd ~/op/${{}:10:-7}; pwd; git -c color.status=always pull' 
 echo 
 echo Done! 
 
