@@ -15,7 +15,7 @@ yoshino
 chiyo
 op-local-tools
 )
-color='\033[0;32m'
+color='\033[1;34m'
 nocolor='\033[0m'
 for repo in ${repos[@]}; do
   echo -e "${color}$repo${nocolor}"
