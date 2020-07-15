@@ -14,6 +14,7 @@ sakura-archive-script
 yoshino
 chiyo
 op-local-tools
+sakura-client.wiki
 )
 color='\033[1;34m'
 nocolor='\033[0m'

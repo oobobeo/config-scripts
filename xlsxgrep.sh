@@ -22,7 +22,7 @@ while getopts ":d:rh" arg; do
       echo $dir
       ;;
     r)
-      files=$(find $dir -name '*' | \grep -v './.git*' | \grep 'xlsx$' | tr '\n' ' ')
+      files=$(find $dir -name '*' | \grep -v './.git*' | \grep -i 'xlsx$' | tr '\n' ' ')
       echo $*
       ;;
     h)

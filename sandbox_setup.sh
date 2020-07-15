@@ -9,4 +9,4 @@ if [[ ! $DIR =~ 'sakura-server' ]]; then
   exit 1
 fi
 
-git apply ~/op/scripts/patches/to_sandbox.patch && echo DONE!
+git apply ~/op/config-scripts/patches/to_sandbox.patch && echo DONE!
