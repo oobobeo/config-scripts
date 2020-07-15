@@ -6,3 +6,4 @@ TODO:
   1. maybe a way to revert this
   
 * (meta) script for automatically updating this repo when the actual configs are changed.
+  1. cron maybe?
