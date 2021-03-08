@@ -5,6 +5,9 @@
 
 # usage:
 # gn [-b] n : jumps n number of commits towards the latest commit, -b for backwards
+
+set -e
+
 while getopts "b" opt;do
   case $opt in
     b)
@@ -29,4 +32,5 @@ else
 fi
 
 # print current commit
-git log --oneline | head -n1
+#it log --oneline | head -n1
+#git이 알아서 해줌
