@@ -96,7 +96,7 @@ setup_cdn_variables () {
   cd ~/op/sakura-archive-all
   CDN_REAL_NTY=$(git show --name-only v$CDN_VERSION | grep 'REAL.nty' | rev | cut -d'/' -f1 | rev)
   CDN_ALPHA_NTY=$(git show --name-only v$CDN_VERSION | grep 'ALPHA.nty' | rev | cut -d'/' -f1 | rev)
-  CDN_ALPHA_ALT_NTY="$CDN_ALPHA_NTY"
+  CDN_ALPHA_ALT_NTY="${CDN_ALPHA_NTY::-9}ALPHA_ALT.nty"
 }
 
 
@@ -123,7 +123,7 @@ setup_uploaded_files () {
   fi
   if [[ -n $CDN_VERSION ]];then
     cdn_version_minus_four=$((${CDN_VERSION:4} - 4))
-    CDN_FILE="cdn_diff_v${CDN_VERSION:0:5}${cdn_version_minus_four}_v${CDN_VERSION}.zip"
+    CDN_FILE="cdn_diff_v${CDN_VERSION:0:4}${cdn_version_minus_four}_v${CDN_VERSION}.zip"
   fi
   if [[ -n $DB_VERSION ]];then
     DB_FILE="master-data-kyoko-default-v${DB_VERSION}.zip"
@@ -166,19 +166,17 @@ $(printf "%s\n" "$SERVER_CHANGELOGS" | while IFS= read -r line; do echo "$line";
 "
 
 CDN_TEMPLATE="# cdn (tw ${CDN_VERSION})
-* ftp: $(date +%y%y%m%d)/cdn_diff_v${CDN_VERSION:0: -4}$(( ${CDN_VERSION: -4} - 4 ))_v${CDN_VERSION}.zip
-* list v8 TAIWAN:
-  * REAL  (v8.3.x): "${CDN_REAL_NTY}"
-  * ALPHA (v8.3.x): "${CDN_ALPHA_NTY}"
+* ftp: $(date +%Y%m%d)/cdn_diff_v${CDN_VERSION:0: -4}$(( ${CDN_VERSION: -4} - 4 ))_v${CDN_VERSION}.zip
 * list v9 TAIWAN:
-  * ALPHA (v9.0.x): "${CDN_ALPHA_ALT_NTY}"
+  * ALPHA (v9.0.x): "${CDN_ALPHA_NTY}"
+  * REAL  (v9.0.x): "${CDN_REAL_NTY}"
 
 ## changelogs
 $( printf "%s" "$CDN_CHANGELOGS" | xargs -I{} echo '*' '{}')
 "
 
 DB_TEMPLATE="# db (tw "${DB_VERSION}")
-* Please apply 8.3.x.ALPHA patch to 125.209.245.243 alpha server
+* Please apply 8.3.x.ALPHA patch to 147.92.157.238 alpha server
 * Please apply 8.3.x.REAL  patch to real server on maintenance day
 
 ## changelogs
